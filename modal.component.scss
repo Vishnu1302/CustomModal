@@ -1,0 +1,104 @@
+// <copyright file="modal.component.scss" company="API Healthcare">
+// Copyright © 2019 API Healthcare Corporation.  All rights reserved.  Confidential and Proprietary.
+// </copyright>
+
+@import "./../../../styles/typography";
+@import "./../../../styles/colors";
+
+$modal-padding: 20px;
+$modal-shadow-color: rgba(0, 0, 0, .4);
+
+wf-modal {
+  .modal-backdrop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    background: $default-dark;
+    opacity: .5;
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+  }
+
+  .wf-modal {
+    max-width: 450px;
+    min-width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: $primary-light 100%;
+    box-shadow: 0 16px 20px $modal-shadow-color;
+    border-radius: 3px;
+    padding: $modal-padding;
+
+    .modal-close {
+      background: inherit;
+      padding: 0;
+      line-height: normal;
+      font-size: 13pt;
+      float: right;
+      cursor: pointer;
+      border: 0px;
+      color: $primary-dark-75;
+    }
+
+    .modal-close:active {
+      outline: none;
+    }
+
+    section {
+      &::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+
+    section.modal-title {
+      margin-bottom: 30px;
+
+      h3 {
+        margin: 0px;
+        padding: 0;
+        font-weight: normal;
+        font-size: $headings-size-large;
+        color: $primary-dark-75;
+      }
+    }
+
+    section.modal-content {
+      padding: 10px 0 20px;
+      font-size: $headings-size-medium-large;
+
+      p {
+        margin: 0px;
+        margin-bottom: 15px;
+        font-size: $headings-size-medium;
+      }
+    }
+
+    hr {
+      background-color: $primary-medium;
+      margin: 0 (-($modal-padding));
+    }
+
+    section.modal-buttons {
+      padding: $modal-padding 0 0;
+
+      .button-container {
+        float: right;
+
+        button {
+          margin-left: 10px;
+        }
+
+        .priority-button {
+          min-width: 90px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<div *ngIf="visibility" class="modal-backdrop"></div>
+<div *ngIf="visibility" class="wf-modal">
+    <button class="modal-close" *ngIf="quickClose" (click)="close()" aria-label="close">
+        X
+    </button>
+    <section *ngIf="title" class="modal-title">
+        <h3>{{ getTitleValue(title) }}</h3>
+    </section>
+    <section class="modal-content">
+        <ng-content></ng-content>
+    </section>
+    <hr *ngIf="buttons && areAnyButtonsEnabled()" />
+    <section *ngIf="buttons && areAnyButtonsEnabled()" class="modal-buttons">
+        <div class="button-container">
+            <ng-container *ngFor="let button of buttons;let i = index;">
+                <button *ngIf="button.condition && button.condition()" [disabled]="callDisabled(button.condition)" class="{{button.styleClass ? button.styleClass : 'secondary-button'}}"
+                    (click)="callOnClick(button.onClick)" #btnModel tabindex="{{i+1}}">{{ getTitleValue(button.text) }}</button>
+            </ng-container>
+        </div>
+    </section>
+</div>
